@@ -2,18 +2,27 @@ import express, { Request, Response } from "express";
 import cors from "cors";
 import "dotenv/config";
 import mongoose from "mongoose";
+import userRoutes from "./routes/users";
 
-mongoose.connect(process.env.MONGODB_CONNECTION_STRING as string);
+const connectToDB = async () => {
+  try {
+    const connect = await mongoose.connect(
+      process.env.MONGODB_CONNECTION_STRING as string
+    );
+    console.log(`Mongo database connected with ${connect.connection.host}`);
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
-app.get("/api/test", async (req: Request, res: Response) => {
-  res.json({ message: "Hello from express endpoint!" });
-});
+app.use("/api/users", userRoutes);
 
-app.listen(5000, () => {
-  console.log("Server running on localhost:7000");
+app.listen(12000, () => {
+  connectToDB();
+  console.log(`Server running on localhost:12000`);
 });
