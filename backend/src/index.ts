@@ -29,7 +29,7 @@ app.use(cors());
 app.use("/api/users", userRoutes);
 app.use("/api/auth", authRoutes);
 
-app.listen(7000, () => {
+app.listen(12000, () => {
   connectToDB();
   console.log(`Server running on localhost:12000`.yellow.underline.bold);
 });

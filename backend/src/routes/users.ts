@@ -48,7 +48,7 @@ router.post(
         maxAge: 86400000, // 1 day in milli seconds
       });
 
-      return res.sendStatus(200);
+      res.status(200).send({ message: "Registered Successfully" });
     } catch (error: any) {
       console.log(error);
       return res.status(500).send({ message: "Something went wrong" });
