@@ -1,16 +1,14 @@
 import express, { Request, Response } from "express";
 import User from "../models/user";
+import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { check, validationResult } from "express-validator";
 
 const router = express.Router();
 
-// /api/users/register
 router.post(
-  "/register",
+  "/login",
   [
-    check("firstName", "First Name is required").isString(),
-    check("lastName", "Last Name is required").isString(),
     check("email", "Email is required").isEmail(),
     check("password", "Password with 6 or more characters required").isLength({
       min: 6,
@@ -22,17 +20,18 @@ router.post(
       return res.status(400).json({ message: errors.array() });
     }
 
-    try {
-      let user = await User.findOne({
-        email: req.body.email,
-      });
+    const { email, password } = req.body;
 
-      if (user) {
-        return res.status(400).json({ message: "User already exists" });
+    try {
+      const user = await User.findOne({ email });
+      if (!user) {
+        return res.status(400).json({ message: "User doesn't exist" });
       }
 
-      user = new User(req.body);
-      await user.save();
+      const isMatch = await bcrypt.compare(password, user.password);
+      if (!isMatch) {
+        return res.status(400).json({ message: "Wrong email or password" });
+      }
 
       const token = jwt.sign(
         { userId: user.id },
@@ -48,10 +47,10 @@ router.post(
         maxAge: 86400000, // 1 day in milli seconds
       });
 
-      return res.sendStatus(200);
+      res.status(200).json({ userId: user._id, user, token });
     } catch (error: any) {
       console.log(error);
-      return res.status(500).send({ message: "Something went wrong" });
+      res.status(500).json({ message: "Something went wrong" });
     }
   }
 );
