@@ -4,29 +4,25 @@ import * as apiClient from "../api-client";
 import { useAppContext } from "../contexts/AppContext";
 import { Link, useNavigate } from "react-router-dom";
 
-export type RegisterFormData = {
-  firstName: string;
-  lastName: string;
+export type SignInFormData = {
   email: string;
   password: string;
-  confirmPassword: string;
 };
 
-const Register = () => {
+const SignIn = () => {
   const queryClient = useQueryClient();
   const { showToast } = useAppContext();
   const navigate = useNavigate();
 
   const {
     register,
-    watch,
     handleSubmit,
     formState: { errors },
-  } = useForm<RegisterFormData>();
+  } = useForm<SignInFormData>();
 
-  const mutation = useMutation(apiClient.register, {
+  const mutation = useMutation(apiClient.signIn, {
     onSuccess: async () => {
-      showToast({ message: "Registeration success!", type: "SUCCESS" });
+      showToast({ message: "LoggedIn SUccessfully!", type: "SUCCESS" });
       await queryClient.invalidateQueries("validateToken");
       navigate("/");
     },
@@ -41,29 +37,7 @@ const Register = () => {
 
   return (
     <form className="flex flex-col gap-5" onSubmit={onSubmit}>
-      <h2 className="text-3xl font-bold">Create an Account</h2>
-      <div className="flex flex-col md:flex-row gap-5">
-        <label className="text-gray-700 text-sm font-bold flex-1">
-          First Name
-          <input
-            className="border rounded w-full py-1 px-2 font-normal"
-            {...register("firstName", { required: "This field is required" })}
-          ></input>
-          {errors.firstName && (
-            <span className="text-red-500">{errors.firstName.message}</span>
-          )}
-        </label>{" "}
-        <label className="text-gray-700 text-sm font-bold flex-1">
-          Last Name
-          <input
-            className="border rounded w-full py-1 px-2 font-normal"
-            {...register("lastName", { required: "This field is required" })}
-          ></input>
-          {errors.lastName && (
-            <span className="text-red-500">{errors.lastName.message}</span>
-          )}
-        </label>
-      </div>
+      <h2 className="text-3xl font-bold">Sign In</h2>
       <label className="text-gray-700 text-sm font-bold flex-1">
         Email
         <input
@@ -92,29 +66,10 @@ const Register = () => {
           <span className="text-red-500">{errors.password.message}</span>
         )}
       </label>{" "}
-      <label className="text-gray-700 text-sm font-bold flex-1">
-        Confirm Password
-        <input
-          type="password"
-          className="border rounded w-full py-1 px-2 font-normal"
-          {...register("confirmPassword", {
-            validate: (val) => {
-              if (!val) {
-                return "This field is required";
-              } else if (watch("password") != val) {
-                return "Your passwords don't match";
-              }
-            },
-          })}
-        ></input>
-        {errors.confirmPassword && (
-          <span className="text-red-500">{errors.confirmPassword.message}</span>
-        )}
-      </label>
       <span className="font-semibold">
-        Already have an account?{" "}
-        <Link className="underline text-blue-600" to="/sign-in">
-          Sign In
+        Don't have an account?{" "}
+        <Link className="underline text-blue-600" to="/register">
+          Register
         </Link>
       </span>
       <span>
@@ -122,11 +77,11 @@ const Register = () => {
           type="submit"
           className="bg-blue-600 text-white p-2 font-bold hover:bg-blue-500 text-xl"
         >
-          Create Account
+          Sign In
         </button>
       </span>
     </form>
   );
 };
 
-export default Register;
+export default SignIn;
