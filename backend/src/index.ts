@@ -12,7 +12,7 @@ mongoose
   .connect(process.env.MONGODB_CONNECTION_STRING as string)
   .then(() =>
     console.log(
-      `Connected to database:${process.env.MONGODB_CONNECTION_STRING}`.cyan
+      `Connected to database: ${process.env.MONGODB_CONNECTION_STRING}`.cyan
         .underline.bold
     )
   );
