@@ -8,19 +8,14 @@ import userRoutes from "./routes/users";
 import authRoutes from "./routes/auth";
 import cookieParser from "cookie-parser";
 
-const connectToDB = async () => {
-  try {
-    const connect = await mongoose.connect(
-      process.env.MONGODB_CONNECTION_STRING as string
-    );
+mongoose
+  .connect(process.env.MONGODB_CONNECTION_STRING as string)
+  .then(() =>
     console.log(
-      `Mongo database connected with ${connect.connection.host}`.cyan.underline
-        .bold
-    );
-  } catch (error) {
-    console.log(error);
-  }
-};
+      `Connected to database:${process.env.MONGODB_CONNECTION_STRING}`.cyan
+        .underline.bold
+    )
+  );
 
 const app = express();
 app.use(cookieParser());
@@ -37,6 +32,5 @@ app.use("/api/users", userRoutes);
 app.use("/api/auth", authRoutes);
 
 app.listen(12000, () => {
-  connectToDB();
   console.log(`Server running on localhost:12000`.yellow.underline.bold);
 });
