@@ -69,7 +69,7 @@ const SignIn = () => {
       <span className="font-semibold">
         Don't have an account?{" "}
         <Link className="underline text-blue-600" to="/register">
-          Register
+          Register Now
         </Link>
       </span>
       <span>
