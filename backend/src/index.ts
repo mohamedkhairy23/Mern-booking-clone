@@ -1,3 +1,4 @@
+import path from "path";
 import express, { Request, Response } from "express";
 import colors from "colors";
 colors.enable();
@@ -27,6 +28,8 @@ app.use(
     credentials: true,
   })
 );
+
+app.use(express.static(path.join(__dirname, "../../frontend/dist")));
 
 app.use("/api/users", userRoutes);
 app.use("/api/auth", authRoutes);
