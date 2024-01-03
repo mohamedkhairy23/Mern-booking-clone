@@ -13,6 +13,8 @@ const MyHotels = () => {
     }
   );
 
+  console.log(hotelData);
+
   if (!hotelData) {
     return <span>No Hotels Found</span>;
   }
@@ -30,7 +32,10 @@ const MyHotels = () => {
 
       <div className="grid grid-cols-1 gap-8">
         {hotelData?.map((hotel) => (
-          <div className="flex flex-col justify-between border border-slate-300 rounded-lg p-8 gap-5">
+          <div
+            key={hotel._id}
+            className="flex flex-col justify-between border border-slate-300 rounded-lg p-8 gap-5"
+          >
             <h2 className="text-2xl font-bold">{hotel.name}</h2>
             <div className="whitespace-pre-line">{hotel.description}</div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-2">
