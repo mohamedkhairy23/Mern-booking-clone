@@ -51,7 +51,7 @@ test("should allow user to add a hotel", async ({ page }) => {
 test("should display hotels", async ({ page }) => {
   await page.goto(`${UI_URL}my-hotels`);
 
-  await expect(page.getByText("Test Hotel Updated")).toBeVisible();
+  await expect(page.getByText("Address Jabal Makkah")).toBeVisible();
   await expect(
     page.getByText(
       "Located in Makkah, 500 meters from Masjid Al Haram, Address Jabal Omar Makkah provides accommodation with a fitness centre, private parking, a shared lounge and a restaurant. This 5-star hotel features."
@@ -75,8 +75,19 @@ test("should edit hotel", async ({ page }) => {
   await page.getByRole("link", { name: "View Details" }).first().click();
 
   await page.waitForSelector('[name="name"]', { state: "attached" });
-  await expect(page.locator('[name="name"]')).toHaveValue("Test Hotel Updated");
-  await page.locator('[name="name"]').fill("Test Hotel Updated2");
+  await expect(page.locator('[name="name"]')).toHaveValue(
+    "Address Jabal Makkah"
+  );
+  await page.locator('[name="name"]').fill("Address Jabal Makkah Updated");
   await page.getByRole("button", { name: "Save" }).click();
   await expect(page.getByText("Updated Hotel Successfully!")).toBeVisible();
+
+  await page.reload();
+
+  await expect(page.locator('[name="name"]')).toHaveValue(
+    "Address Jabal Makkah Updated"
+  );
+
+  await page.locator('[name="name"]').fill("Address Jabal Makkah");
+  await page.getByRole("button", { name: "Save" }).click();
 });
