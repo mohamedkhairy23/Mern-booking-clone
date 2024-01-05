@@ -9,6 +9,7 @@ import StarRatingFilter from "../components/StarRatingFilter";
 import HotelTypesFilter from "../components/HotelTypesFilter";
 import FacilitiesFilter from "../components/FacilitiesFilter";
 import PriceFilter from "../components/PriceFilter";
+import Spinner from "../components/Spinner";
 
 const Search = () => {
   const search = useSearchContext();
@@ -33,7 +34,11 @@ const Search = () => {
     sortOption,
   };
 
-  const { data: hotelData } = useQuery(["searchHotels", searchParams], () =>
+  const {
+    isLoading,
+    isError,
+    data: hotelData,
+  } = useQuery(["searchHotels", searchParams], () =>
     apiClient.SearchHotels(searchParams)
   );
 
@@ -117,9 +122,19 @@ const Search = () => {
             </option>
           </select>
         </div>
-        {hotelData?.data.map((hotel: HotelType) => (
-          <SearchResultCard hotel={hotel} />
-        ))}
+        {isLoading ? (
+          <>
+            <Spinner />
+          </>
+        ) : isError ? (
+          <>
+            <p>Something went wrong</p>
+          </>
+        ) : (
+          hotelData?.data.map((hotel: HotelType) => (
+            <SearchResultCard hotel={hotel} />
+          ))
+        )}
         <div>
           <Pagination
             page={hotelData?.pagination.page || 1}
