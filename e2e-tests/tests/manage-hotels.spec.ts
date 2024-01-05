@@ -54,13 +54,13 @@ test("should display hotels", async ({ page }) => {
   await expect(page.getByText("Address Jabal Makkah")).toBeVisible();
   await expect(
     page.getByText(
-      "Located in Makkah, 500 meters from Masjid Al Haram, Address Jabal Omar Makkah provides accommodation with a fitness centre, private parking, a shared lounge and a restaurant. This 5-star hotel features."
+      "Get the celebrity treatment with world-class service at Address Jabal Omar Makkah."
     )
   ).toBeVisible();
   await expect(page.getByText("Makkah, Saudi Arabia")).toBeVisible();
-  await expect(page.getByText("Family")).toBeVisible();
-  await expect(page.getByText("£234 per night")).toBeVisible();
-  await expect(page.getByText("3 adults, 4 children")).toBeVisible();
+  await expect(page.getByText("Boutique")).toBeVisible();
+  await expect(page.getByText("£120 per night")).toBeVisible();
+  await expect(page.getByText("2 adults, 1 children")).toBeVisible();
   await expect(page.getByText("4 Star Rating")).toBeVisible();
 
   await expect(
