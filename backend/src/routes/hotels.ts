@@ -7,7 +7,7 @@ const router = express.Router();
 // /api/hotels/search
 router.get("/search", async (req: Request, res: Response) => {
   try {
-    const pageSize = 5;
+    const pageSize = 1;
     const pageNumber = parseInt(
       req.query.page ? req.query.page.toString() : "1"
     );
