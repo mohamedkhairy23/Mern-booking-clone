@@ -3,6 +3,7 @@ import {
   Navigate,
   Route,
   Routes,
+  useLocation,
 } from "react-router-dom";
 import "./App.css";
 import Layout from "./layouts/Layout";
@@ -14,12 +15,22 @@ import MyHotels from "./pages/MyHotels";
 import EditHotel from "./pages/EditHotel";
 import Search from "./pages/Search";
 import Detail from "./pages/Detail";
+import { useEffect } from "react";
+
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+};
 
 function App() {
   const { isLoggedIn } = useAppContext();
 
   return (
     <Router>
+      <ScrollToTop />
       <Routes>
         <Route
           path="/"
