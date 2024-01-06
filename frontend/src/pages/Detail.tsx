@@ -21,7 +21,11 @@ const Detail = () => {
   );
 
   if (!hotel) {
-    return <></>;
+    return (
+      <>
+        <Spinner />
+      </>
+    );
   }
 
   return (

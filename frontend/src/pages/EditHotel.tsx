@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import * as apiClient from "../api-client";
 import ManageHotelForm from "../forms/ManageHtelForm/ManageHotelForm";
 import { useAppContext } from "../contexts/AppContext";
+import Spinner from "../components/Spinner";
 
 const EditHotel = () => {
   const { showToast } = useAppContext();
@@ -28,6 +29,12 @@ const EditHotel = () => {
   const handleSave = (hotelFormData: FormData) => {
     mutate(hotelFormData);
   };
+
+  if (!hotel) {
+    <>
+      <Spinner />
+    </>;
+  }
 
   return (
     <ManageHotelForm hotel={hotel} onSave={handleSave} isLoading={isLoading} />

@@ -15,7 +15,11 @@ const MyHotels = () => {
   });
 
   if (!hotelData) {
-    return <span>No Hotels Found</span>;
+    return (
+      <>
+        <Spinner />
+      </>
+    );
   }
 
   return (
