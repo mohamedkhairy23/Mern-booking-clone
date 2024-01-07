@@ -69,7 +69,7 @@ const Booking = () => {
         numberOfNights={numberOfNights}
         hotel={hotel}
       />
-      {currentUser && paymentIntentData && (
+      {currentUser && paymentIntentData ? (
         <Elements
           stripe={stripePromise}
           options={{
@@ -81,6 +81,12 @@ const Booking = () => {
             paymentIntent={paymentIntentData}
           />
         </Elements>
+      ) : (
+        <>
+          <span className="text-3xl font-bold text-center md:text-start">
+            Please Select Number of Nights To Complete Room Booing Process
+          </span>
+        </>
       )}
     </div>
   );
