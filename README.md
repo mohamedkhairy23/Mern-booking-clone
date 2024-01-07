@@ -8,13 +8,15 @@ Technologies:
 - TailwindCSS for styling
 - NodeJS
 - Express
-- Json web token
+- JSON Web Token
 - Mongo database
 - Stripe for payment
 
 Features: 
-- Search for hotels by destination(city and country), search by adult count and child count, and take check-in and check-out dates from date picker.
-and share all that values globally by context save that values in broswser in session storage.
+- Authentication and authorization.
+- Search for hotels by destination(city and country), search by adult count and child count, and take check-in and check-out dates from the date picker.
+and share all these values globally by context and save these values in the browser in session storage.
+- Filter by rating, hotel type, facilities, and maximum price.
 - Add hotel data.
 - Edit hotel data.
 - Get my hotels(Logged-in user hotels).
