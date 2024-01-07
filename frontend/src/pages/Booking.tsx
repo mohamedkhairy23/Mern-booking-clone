@@ -62,9 +62,12 @@ const Booking = () => {
   if (!paymentIntentData || numberOfNights <= 0) {
     return (
       <>
-        <span className="text-3xl font-normal text-center md:text-start">
-          Please Select Number of Nights To Complete Room Booking Process.
-        </span>{" "}
+        <div className="text-center md:text-start">
+          <span className="text-3xl font-normal text-center md:text-start">
+            Please Select Check-in and Check-out Date To Complete Room Booking
+            Process.
+          </span>
+        </div>{" "}
         <div className="text-center md:text-start">
           <Link
             className="text-3xl font-bold underline"
@@ -72,9 +75,6 @@ const Booking = () => {
           >
             Back To {hotel.name}
           </Link>{" "}
-          <span className="text-3xl font-bold">
-            To Select Check-in and Check-out Date
-          </span>
         </div>
       </>
     );
