@@ -65,14 +65,14 @@ const Booking = () => {
         <span className="text-3xl font-bold text-center md:text-start">
           Please Select Number of Nights To Complete Room Booking Process.
         </span>{" "}
-        <div>
+        <div className="text-center md:text-start">
           <Link
             className="text-3xl font-bold underline"
             to={`/detail/${hotelId}`}
           >
             Back To {hotel.name}
           </Link>{" "}
-          <span className="text-3xl font-bold text-center md:text-start">
+          <span className="text-3xl font-bold">
             To Select Check-in and Check-out Date
           </span>
         </div>
