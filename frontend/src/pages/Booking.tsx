@@ -59,6 +59,24 @@ const Booking = () => {
     );
   }
 
+  if (!paymentIntentData) {
+    return (
+      <>
+        <Spinner />
+      </>
+    );
+  }
+
+  if (!paymentIntentData || numberOfNights <= 0) {
+    return (
+      <>
+        <span className="text-3xl font-bold text-center md:text-start">
+          Please Select Number of Nights To Complete Room Booing Process
+        </span>
+      </>
+    );
+  }
+
   return (
     <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-3 mx-3">
       <BookingDetailsSummary
