@@ -25,7 +25,7 @@ const MyHotels = () => {
   if (!hotelData || hotelData.length === 0) {
     return (
       <>
-        <span>No Hotels Found</span>
+        <span className="text-3xl font-bold">No Hotels Found</span>
       </>
     );
   }

@@ -19,7 +19,7 @@ const MyBookings = () => {
   if (!hotels || hotels.length === 0) {
     return (
       <>
-        <h1 className="text-3xl font-bold">No Bookings Found</h1>
+        <span className="text-3xl font-bold">No Bookings Found</span>
       </>
     );
   }
