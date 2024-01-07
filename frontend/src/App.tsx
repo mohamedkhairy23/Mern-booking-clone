@@ -19,6 +19,7 @@ import { useEffect } from "react";
 import Booking from "./pages/Booking";
 import MyBookings from "./pages/MyBookings";
 import Home from "./pages/Home";
+import HeaderLayout from "./layouts/HeaderLayout";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -54,25 +55,25 @@ function App() {
         <Route
           path="/detail/:hotelId"
           element={
-            <Layout>
+            <HeaderLayout>
               <Detail />
-            </Layout>
+            </HeaderLayout>
           }
         />
         <Route
           path="/register"
           element={
-            <Layout>
+            <HeaderLayout>
               <Register />
-            </Layout>
+            </HeaderLayout>
           }
         />{" "}
         <Route
           path="/sign-in"
           element={
-            <Layout>
+            <HeaderLayout>
               <SignIn />
-            </Layout>
+            </HeaderLayout>
           }
         />
         {isLoggedIn && (
@@ -80,41 +81,41 @@ function App() {
             <Route
               path="/hotel/:hotelId/booking"
               element={
-                <Layout>
+                <HeaderLayout>
                   <Booking />
-                </Layout>
+                </HeaderLayout>
               }
             />
             <Route
               path="/add-hotel"
               element={
-                <Layout>
+                <HeaderLayout>
                   <AddHotel />
-                </Layout>
+                </HeaderLayout>
               }
             />
             <Route
               path="/edit-hotel/:hotelId"
               element={
-                <Layout>
+                <HeaderLayout>
                   <EditHotel />
-                </Layout>
+                </HeaderLayout>
               }
             />
             <Route
               path="/my-hotels"
               element={
-                <Layout>
+                <HeaderLayout>
                   <MyHotels />
-                </Layout>
+                </HeaderLayout>
               }
             />
             <Route
               path="/my-bookings"
               element={
-                <Layout>
+                <HeaderLayout>
                   <MyBookings />
-                </Layout>
+                </HeaderLayout>
               }
             />
           </>
