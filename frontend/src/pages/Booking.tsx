@@ -2,7 +2,7 @@ import { useQuery } from "react-query";
 import * as apiClient from "../api-client";
 import BookingForm from "../forms/BookingForm/BookingForm";
 import { useSearchContext } from "../contexts/SearchContext";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import BookingDetailsSummary from "../components/BookingDetailsSummary";
 import Spinner from "../components/Spinner";
