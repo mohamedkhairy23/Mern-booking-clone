@@ -2,7 +2,7 @@ import { useQuery } from "react-query";
 import * as apiClient from "../api-client";
 import BookingForm from "../forms/BookingForm/BookingForm";
 import { useSearchContext } from "../contexts/SearchContext";
-import { useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import BookingDetailsSummary from "../components/BookingDetailsSummary";
 import Spinner from "../components/Spinner";
@@ -65,6 +65,7 @@ const Booking = () => {
         <span className="text-3xl font-bold text-center md:text-start">
           Please Select Number of Nights To Complete Room Booking Process
         </span>
+        <Link to={`/detail/${hotelId}`}>{hotel.name}</Link>
       </>
     );
   }
@@ -102,7 +103,7 @@ const Booking = () => {
       ) : (
         <>
           <span className="text-3xl font-bold text-center md:text-start">
-            Please Select Number of Nights To Complete Room Booing Process
+            Please Select Number of Nights To Complete Room Booking Process
           </span>
         </>
       )}
