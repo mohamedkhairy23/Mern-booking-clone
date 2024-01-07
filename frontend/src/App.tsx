@@ -60,22 +60,26 @@ function App() {
             </HeaderLayout>
           }
         />
-        <Route
-          path="/register"
-          element={
-            <HeaderLayout>
-              <Register />
-            </HeaderLayout>
-          }
-        />{" "}
-        <Route
-          path="/sign-in"
-          element={
-            <HeaderLayout>
-              <SignIn />
-            </HeaderLayout>
-          }
-        />
+        {!isLoggedIn && (
+          <>
+            <Route
+              path="/register"
+              element={
+                <HeaderLayout>
+                  <Register />
+                </HeaderLayout>
+              }
+            />{" "}
+            <Route
+              path="/sign-in"
+              element={
+                <HeaderLayout>
+                  <SignIn />
+                </HeaderLayout>
+              }
+            />
+          </>
+        )}
         {isLoggedIn && (
           <>
             <Route
