@@ -25,7 +25,15 @@ const MyHotels = () => {
   if (!hotelData || hotelData.length === 0) {
     return (
       <>
-        <span className="text-3xl font-bold">No Hotels Found</span>
+        <span className="flex justify-between">
+          <span className="text-3xl font-bold">No Hotels Found</span>
+          <Link
+            to="/add-hotel"
+            className="flex bg-blue-600 text-white text-xl font-bold p-2 hover:bg-blue-500"
+          >
+            Add Hotel
+          </Link>
+        </span>
       </>
     );
   }
