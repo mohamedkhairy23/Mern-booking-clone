@@ -1,11 +1,28 @@
 import { useQuery } from "react-query";
 import * as apiClient from "../api-client";
 import LatestDestinationCard from "../components/LatestDestinationCard";
+import Spinner from "../components/Spinner";
 
 const Home = () => {
   const { data: hotels } = useQuery("fetchQuery", () =>
     apiClient.fetchHotels()
   );
+
+  if (!hotels) {
+    return (
+      <>
+        <Spinner />
+      </>
+    );
+  }
+
+  if (!hotels || hotels.length === 0) {
+    return (
+      <>
+        <span>No hotels found</span>;
+      </>
+    );
+  }
 
   const topRowHotels = hotels?.slice(0, 2) || [];
   const bottomRowHotels = hotels?.slice(2) || [];
