@@ -20,7 +20,7 @@ const Detail = () => {
     }
   );
 
-  if (!hotel) {
+  if (!hotel || !hotelId) {
     return (
       <>
         <Spinner />
