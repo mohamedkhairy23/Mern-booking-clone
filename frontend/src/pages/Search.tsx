@@ -76,6 +76,22 @@ const Search = () => {
     );
   };
 
+  if (!hotelData) {
+    return (
+      <>
+        <Spinner />
+      </>
+    );
+  }
+
+  if (!hotelData || hotelData.length === 0) {
+    return (
+      <>
+        <span>No hotels found</span>;
+      </>
+    );
+  }
+
   return (
     <div className="grid grid-cols-1 lg:grid-cols-[250px_1fr] gap-5 mx-3">
       <div className="rounded-lg border border-slate-300 p-5 h-fit lg:sticky top-10">

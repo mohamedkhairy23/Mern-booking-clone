@@ -22,6 +22,14 @@ const MyHotels = () => {
     );
   }
 
+  if (!hotelData || hotelData.length === 0) {
+    return (
+      <>
+        <span>No hotels found</span>;
+      </>
+    );
+  }
+
   return (
     <div className="space-y-5 px-3">
       <span className="flex justify-between">
