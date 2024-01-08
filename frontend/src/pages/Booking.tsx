@@ -34,7 +34,7 @@ const Booking = () => {
         numberOfNights.toString()
       ),
     {
-      enabled: !!hotelId && numberOfNights > 0,
+      enabled: !!hotelId,
     }
   );
 
