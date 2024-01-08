@@ -11,6 +11,7 @@ Technologies:
 - JSON Web Token
 - Mongo database
 - Stripe for payment
+- Playwright for automation test(end to end test). 
 
 Features: 
 - Authentication and authorization.
