@@ -59,7 +59,15 @@ const Booking = () => {
     );
   }
 
-  if (!paymentIntentData || numberOfNights <= 0) {
+  if (!paymentIntentData) {
+    return (
+      <>
+        <Spinner />
+      </>
+    );
+  }
+
+  if (numberOfNights <= 0) {
     return (
       <>
         <div className="text-center md:text-start">
