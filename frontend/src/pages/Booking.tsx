@@ -34,7 +34,7 @@ const Booking = () => {
         numberOfNights.toString()
       ),
     {
-      enabled: !!hotelId,
+      enabled: !!hotelId && numberOfNights > 0,
     }
   );
 
@@ -59,15 +59,7 @@ const Booking = () => {
     );
   }
 
-  if (!paymentIntentData) {
-    return (
-      <>
-        <Spinner />
-      </>
-    );
-  }
-
-  if (numberOfNights <= 0) {
+  if (!paymentIntentData || numberOfNights <= 0) {
     return (
       <>
         <div className="text-center md:text-start">
