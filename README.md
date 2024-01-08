@@ -2,7 +2,7 @@ Deployment Link: https://booking-app-a5tg.onrender.com/
 
 Technologies:
 - Typescript
-- React
+- React and Vite
 - Context for state management
 - React hook form for form validation
 - TailwindCSS for styling
