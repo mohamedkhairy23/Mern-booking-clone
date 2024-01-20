@@ -15,8 +15,8 @@ Technologies:
 
 Features: 
 - Authentication and authorization.
-- Search for hotels by destination(city and country), search by adult count and child count, and take check-in and check-out dates from the date picker.
-and share all these values globally by context and save these values in the browser in session storage.
+- Searching for hotels by destination(city and country), searching by adult count and child count, and taking check-in and check-out dates from the date picker.
+  and sharing all these values globally by context and saving these values in the browser in session storage.
 - Filter by rating, hotel type, facilities, and maximum price.
 - Add hotel data.
 - Edit hotel data.
