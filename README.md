@@ -4,6 +4,7 @@ Technologies:
 - Typescript
 - React and Vite
 - Context for state management
+- React query for handling client api requests
 - React hook form for form validation
 - TailwindCSS for styling
 - NodeJS
