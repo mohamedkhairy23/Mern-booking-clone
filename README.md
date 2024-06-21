@@ -1,6 +1,7 @@
-Deployment Link: https://booking-app-a5tg.onrender.com/
+## Deployment Link: https://booking-app-a5tg.onrender.com/
 
-Technologies:
+## Technologies:
+
 - Typescript
 - React and Vite
 - Context for state management
