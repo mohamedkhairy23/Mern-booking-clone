@@ -1,6 +1,6 @@
 ## Deployment Link: https://booking-app-a5tg.onrender.com/
 
-## Technologies:
+## I used in this project:
 
 - Typescript
 - React and Vite
