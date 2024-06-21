@@ -15,7 +15,7 @@
 - Stripe for payment
 - Playwright for automation test(end to end test). 
 
-Features: 
+## Features: 
 - Authentication and authorization.
 - Searching for hotels by destination(city and country), searching by adult count and child count, and taking check-in and check-out dates from the date picker.
   and sharing all these values globally by context and saving these values in the browser in session storage.
